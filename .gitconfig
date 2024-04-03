@@ -1,0 +1,144 @@
+[alias]
+	exec = ! "exec"
+	st = status -sb
+	versions = tag -l --sort=version:refname
+	br = branch -vv
+	bra = branch -vv --all
+	bed = branch --edit-description
+	aa = add --all :/
+	ci = commit -v
+	ca = commit --amend -v
+	save = commit -a -m "Save"
+	co = checkout
+	di = diff
+	dis = diff --stat
+	diw = diff --color-words
+	dc = diff --cached
+	dcs = diff --cached --stat
+	dcw = diff --cached --color-words
+	dh = diff HEAD~
+	dhs = diff HEAD~ --stat
+	dhw = diff HEAD~ --color-words
+	du = diff @{u}...
+	dus = diff @{u}... --stat
+	duw = diff @{u}... --color-words
+	grp = grep -C 1
+	ff = merge --ff-only
+	noff = merge --no-ff
+	f = fetch --tags --prune
+	fa = fetch --all --tags --prune
+	pullrb = pull --rebase
+	mirror-remote = ! "mr() { git push \"${2}\" \"refs/remotes/${1}/*:refs/heads/*\" && git remote set-head \"${2}\" -a; }; mr"
+	count = diff --stat "4b825dc642cb6eb9a060e54bf8d69288fbee4904" # hash of empty tree
+	credit = shortlog -sn
+	linecredit = ! "lc() { git ls-tree --name-only -z -r HEAD | xargs -0 -n1 git diff --no-index --numstat /dev/null 2>/dev/null | grep -v '^-' | cut -f 3- | cut -d ' ' -f 3- | xargs -n1 git blame --line-porcelain | grep '^author ' | cut -d ' ' -f 2- | sort | uniq -c | sort -nr; }; lc"
+	cc = rev-list HEAD --count
+	cca = rev-list --all --count
+	lg = log -p
+	gr = log --graph --format=line # graph
+	grd = log --graph --format=detail # graph detail
+	gra = log --graph --format=line --all # graph all
+	grad = log --graph --format=detail --all # graph all in detail
+	sf = show --format=fuller --show-signature
+	sfw = show --format=fuller --color-words
+	sfs = show --format=fuller --stat
+	showtool = ! "st() { if [ -z $1 ]; then c='HEAD'; else c=$1; fi; git difftool $c~..$c; }; st"
+	info = ! "inf() { if git rev-parse ${1} >/dev/null 2>&1; then git cat-file -p $(git rev-parse ${1}); else echo Invalid object; fi }; inf"
+	cleanall = clean -fdx # this is dangerous, so it's intentionally long to type
+	stsh = stash --keep-index
+	staash = stash --include-untracked
+	update-submodules = submodule update --init --recursive
+	upgrade-submodules = submodule update --init --remote
+	empty-tree-hash = hash-object -t tree /dev/null
+	root = rev-parse --show-toplevel
+	ctags = ! "ctg() { trap \"rm -f .git/tags.$$\" EXIT; ctags --tag-relative -Rf.git/tags.$$ --exclude=.git; mv .git/tags.$$ .git/tags; }; ctg"
+	tar = ! "tar() { git archive --format tar --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; tar"
+	targz = ! "targz() { git archive --format tar.gz --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; targz"
+	zip = ! "zip() { git archive --format zip --prefix=\"${PWD##*/}/\" HEAD -o ${1}; }; zip"
+
+[init]
+	defaultBranch = master # 指定新创建的仓库默认分支为 master 分支
+
+[diff]
+	mnemonicPrefix = true # 使用更容易记忆的行号前缀
+	wordRegex = "[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+" # 定义了用于识别单词的正则表达式
+	compactionHeuristic = true # 启用合并相邻上下文行的启发式算法
+	colorMoved = default # 设置移动行的颜色为默认值
+
+[color]
+	ui = auto # 自动设置终端的颜色
+
+[color "grep"]
+	match = cyan bold # 匹配文本的颜色和样式
+	selected = blue # 选中文本的颜色
+	context = normal # 上下文文本的颜色
+	filename = magenta # 文件名的颜色
+	linenumber = green # 行号的颜色
+	separator = yellow # 分隔符的颜色
+	function = blue # 函数名的颜色
+
+[pretty]
+	line = "%C(auto)%h %<|(60,trunc)%s %C(green)%ad%C(auto)%d" # 定义了在 git log 中使用的输出格式
+	detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ad%n %C(auto)%d%n" # 定义了详细输出的格式
+
+
+[merge]
+	defaultToUpstream = true # 默认使用与当前分支关联的上游分支进行合并
+	tool = vimdiff # 合并时使用 vimdiff 工具
+	conflictstyle = diff3 # 在合并冲突时使用 diff3 显示风格，显示当前分支、上游分支和共同祖先的更改
+
+[pull]
+	ff = only # fast forward，当没有冲突时，不需要合并后创建一个新的commit节点，单纯的移动靠后的分支指针到最新的。只允许fast forward
+
+[mergetool]
+	# keepBackup = false # 在合并时不保留备份文件
+
+[push]
+	default = upstream # 默认推送到上游分支
+
+[credential]
+	helper = "!f() { /root/.vscode-server/bin/5c3e652f63e798a5ac2f31ffd0d863669328dc4c/node /tmp/vscode-remote-containers-de4d664f-5848-46c0-8065-8cecd3ba2bd2.js git-credential-helper $*; }; f"
+
+[grep]
+	lineNumber = true # 使用 grep 命令时，显示匹配行的行号
+
+[advice]
+	# detachedHead = false # 不显示分离头状态的提示
+	# waitingForEditor = false # 不显示等待编辑器状态的提示
+
+[user]
+	name = gukele
+	email = 805926222@qq.com
+	useConfigOnly = true # 仅使用 Git 配置文件中的用户信息
+
+[http]
+	cookieFile = ~/.gitcookies # HTTP cookie 文件路径
+
+[core]
+	pager = delta # 使用 delta 作为 Git 的分页程序
+	excludesfile = ~/.gitignore_global # 全局的 Git 忽略文件路径
+  autocrlf = input # 上传到github时 CRLF转为 LF。linux下使用 LF 换行。
+
+[url "https://github.com/"]
+	insteadOf = git://github.com/ # 使用 https 协议替代 git 协议来访问 GitHub
+
+[include]
+	path = ~/.gitconfig_local # Allow local customizations in the .gitconfig_local file
+
+[i18n]
+	commitencoding = utf-8 # 提交时的编码
+	logoutputencoding = utf-8 # 日志输出的编码
+
+[interactive]
+	diffFilter = delta --color-only # 设置交互式的 git diff 使用 delta 进行彩色输出
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+	line-numbers = true
+
+	# delta detects terminal colors automatically; set one of these to disable auto-detection
+	# dark = true
+	# light = true
+
+
+
