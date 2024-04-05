@@ -1,18 +1,21 @@
-[submodule ".zsh/plugins/fzf"]
+[submodule "fzf"]
 	path = .zsh/plugins/fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule ".zsh/plugins/fzf-tab"]
+[submodule "fzf-tab"]
 	path = .zsh/plugins/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab.git
-[submodule ".zsh/plugins/powerlevel10k"]
+[submodule "powerlevel10k"]
 	path = .zsh/plugins/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
-[submodule ".zsh/plugins/zsh-autosuggestions"]
+[submodule "zsh-autosuggestions"]
 	path = .zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule ".zsh/plugins/zsh-syntax-highlighting"]
+[submodule "zsh-syntax-highlighting"]
 	path = .zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "/root/.zsh/plugins/zsh-you-should-use"]
-	path = /root/.zsh/plugins/zsh-you-should-use
+[submodule "zsh-you-should-use"]
+  path = .zsh/plugins/zsh-you-should-use
+  url = https://github.com/MichaelAquilina/zsh-you-should-use.git
+[submodule "zsh-you-should-use"]
+	path = .zsh/plugins/zsh-you-should-use
 	url = https://github.com/MichaelAquilina/zsh-you-should-use.git

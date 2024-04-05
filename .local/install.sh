@@ -43,7 +43,7 @@ install() {
 
 
 
-    if grep -q "Ubuntu" /etc/os-release; then
+    if grep -qE "ID=ubuntu|ID=debian" /etc/os-release; then
 
         if ! has_cmd lsd; then
             if grep -q "Ubuntu" /etc/os-release; then

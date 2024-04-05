@@ -1,6 +1,8 @@
 # you can see how to make full use of fzf's --preview option when using fzf-tab in https://github.com/Aloxaf/fzf-tab/wiki/Preview
 export RUNEWIDTH_EASTASIAN=0
-export FZF_DEFAULT_OPTS="--preview 'bash ~/.zsh/file_preview.sh {}' --height 12 --layout=reverse --history=/root/.zsh/cache/fzfhistory"
+
+mkdir -p "${HOME}/.zsh/cache" && touch "${HOME}/.zsh/cache/fzf_history"
+export FZF_DEFAULT_OPTS="--preview 'bash ~/.zsh/file_preview.sh {}' --height 12 --layout=reverse --history=${HOME}/.zsh/cache/fzf_history"
 # export FZF_DEFAULT_COMMAND="fd --type file --color=always --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,dist,vendor} --type f"
 export FZF_DEFAULT_COMMAND="fdfind --color=always --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,dist,vendor} --type f"
 
@@ -73,7 +75,7 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
 	esac'
 
 
-# tldr 
+# tldr
 zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
 
 # Commands

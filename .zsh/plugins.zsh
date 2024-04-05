@@ -7,10 +7,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if ! command -v fzf &> /dev/null; then
-  yse | ~/.zsh/plugins/fzf/install --bin --no-zsh --no-fish --no-bash
-fi
-
 # add fzf path and set up shell integration.
 source ~/.zsh/fzf.zsh
 
