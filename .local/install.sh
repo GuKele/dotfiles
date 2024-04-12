@@ -17,39 +17,39 @@ install() {
     has_cmd fdfind || apt install fd-find;
     has_cmd rg || apt install ripgrep;
     has_cmd zoxide || apt install zoxide;
-    has_cmd batcat || has_cmd bat || apt install bat;
+    has_cmd batcat || has_cmd bat || apt install batcat || apt install bat;
     has_cmd duf || apt install duf
 
 
-    if grep -qE "ID=ubuntu|ID=debian" /etc/os-release; then
+    if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
 
         if ! has_cmd lsd; then
-            if grep -q "Ubuntu" /etc/os-release; then
-                ln -s ~/.local/bin/lsd /usr/bin/lsd
+            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
+                ln -s ${DOTFILES_DIR}/.local/bin/lsd /usr/bin/lsd
             else
                 tools+=" lsd"
             fi
         fi
 
         if ! has_cmd delta; then
-            if grep -q "Ubuntu" /etc/os-release; then
-                ln -s ~/.local/bin/delta /usr/bin/delta
+            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
+                ln -s ${DOTFILES_DIR}/.local/bin/delta /usr/bin/delta
             else
                 tools+=" delta"
             fi
         fi
 
         if ! has_cmd procs; then
-            if grep -q "Ubuntu" /etc/os-release; then
-                ln -s ~/.local/bin/procs /usr/bin/procs
+            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
+                ln -s ${DOTFILES_DIR}/.local/bin/procs /usr/bin/procs
             else
                 tools+=" procs"
             fi
         fi
 
         if ! has_cmd tldr; then
-            if grep -q "Ubuntu" /etc/os-release; then
-                ln -s ~/.local/bin/tldr /usr/bin/tldr
+            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
+                ln -s ${DOTFILES_DIR}/.local/bin/tldr /usr/bin/tldr
             else
                 tools+=" tldr"
             fi

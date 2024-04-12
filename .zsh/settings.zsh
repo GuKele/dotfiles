@@ -7,6 +7,7 @@
 # bindkey -M menuselect 'k' vi-up-line-or-history
 # bindkey -M menuselect 'l' vi-forward-char
 # bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey '^Xh' _complete_help
 
 # language
 export LANG=zh_CN.UTF-8
@@ -19,7 +20,7 @@ setopt interactivecomments
 
 # Nicer history
 HISTSIZE=1048576
-HISTFILE="$HOME/.zsh/cache/zsh_history"
+HISTFILE="${DOTFILES_DIR}/.zsh/cache/zsh_history"
 SAVEHIST=$HISTSIZE
 setopt appendhistory
 setopt incappendhistory
@@ -49,4 +50,4 @@ export EDITOR=vim
 # bindkey "^R" history-incremental-search-backward
 
 # Disable shell builtins
-disable r
+# disable r
