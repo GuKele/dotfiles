@@ -1,4 +1,3 @@
-
 autoload -U compinit; compinit
 
 # Initialization code that may require console input (password prompts, [y/n]

@@ -64,6 +64,7 @@
 	wordRegex = "[^[:space:]]|([[:alnum:]]|UTF_8_GUARD)+" # 定义了用于识别单词的正则表达式
 	compactionHeuristic = true # 启用合并相邻上下文行的启发式算法
 	colorMoved = default # 设置移动行的颜色为默认值
+	tool = delta
 
 [color]
 	ui = auto # 自动设置终端的颜色
@@ -81,7 +82,6 @@
 	line = "%C(auto)%h %<|(60,trunc)%s %C(green)%ad%C(auto)%d" # 定义了在 git log 中使用的输出格式
 	detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ad%n %C(auto)%d%n" # 定义了详细输出的格式
 
-
 [merge]
 	defaultToUpstream = true # 默认使用与当前分支关联的上游分支进行合并
 	tool = vimdiff # 合并时使用 vimdiff 工具
@@ -97,7 +97,7 @@
 	default = upstream # 默认推送到上游分支
 
 [credential]
-	helper = "!f() { /root/.vscode-server/bin/5c3e652f63e798a5ac2f31ffd0d863669328dc4c/node /tmp/vscode-remote-containers-de4d664f-5848-46c0-8065-8cecd3ba2bd2.js git-credential-helper $*; }; f"
+	helper = "!f() { /root/.vscode-server/bin/5c3e652f63e798a5ac2f31ffd0d863669328dc4c/node /tmp/vscode-remote-containers-0bb5a426-1a13-4fd2-a771-db0864dbc4e9.js git-credential-helper $*; }; f"
 
 [grep]
 	lineNumber = true # 使用 grep 命令时，显示匹配行的行号

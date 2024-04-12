@@ -11,36 +11,14 @@
 
 
 install() {
-    if ! has_cmd tldr; then
-        apt install tldr
-    fi
-
-    if ! has_cmd exa; then
-        apt install exa
-    fi
-
-    if ! has_cmd fdfind; then
-        apt install fd-find
-    fi
-
-    if ! has_cmd rg; then
-        apt install ripgrep
-    fi
-
-    if ! has_cmd zoxide; then
-        apt install zoxide
-    fi
-
-    if ! has_cmd batcat; then
-        if ! has_cmd bat; then
-        apt install bat
-        fi
-    fi
-
-    if ! has_cmd duf; then
-        apt install duf
-    fi
-
+    has_cmd shellcheck || apt install shellcheck;
+    has_cmd tldr || apt install tldr;
+    has_cmd exa || apt install exa;
+    has_cmd fdfind || apt install fd-find;
+    has_cmd rg || apt install ripgrep;
+    has_cmd zoxide || apt install zoxide;
+    has_cmd batcat || has_cmd bat || apt install bat;
+    has_cmd duf || apt install duf
 
 
     if grep -qE "ID=ubuntu|ID=debian" /etc/os-release; then

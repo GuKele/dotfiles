@@ -18,4 +18,3 @@ source ~/.shell/aliases.sh
 # tools alias
 source ~/.local/aliases.sh
 
-
