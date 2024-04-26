@@ -20,7 +20,7 @@ install() {
     has_cmd zoxide || apt install zoxide;
     has_cmd batcat || has_cmd bat || apt install batcat || apt install bat;
     has_cmd duf || apt install duf
-    has_cmd fzf || apt install fzf
+    # has_cmd fzf || apt install fzf
     has_cmd htop || apt install htop
 
     if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then

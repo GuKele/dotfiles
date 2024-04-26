@@ -1,13 +1,13 @@
 # you can see how to make full use of fzf's --preview option when using fzf-tab in https://github.com/Aloxaf/fzf-tab/wiki/Preview
 # export RUNEWIDTH_EASTASIAN=0
 
-mkdir -p "${DOTFILES_DIR}/.zsh/cache" && touch "${DOTFILES_DIR}/.zsh/cache/fzf_history"
 export FZF_DEFAULT_OPTS="--preview 'bash ${DOTFILES_DIR}/.zsh/file_preview.sh {}' --height 12 --layout=reverse --history=${DOTFILES_DIR}/.zsh/cache/fzf_history"
 export FZF_DEFAULT_COMMAND="fdfind --color=always --exclude={.git,.idea,.vscode,.sass-cache,node_modules,build,dist,vendor} --type f"
 
 # 配置fzf-tab插件
 zstyle ':completion:complete:*:options' sort false
-zstyle ':fzf-tab:*' fzf-command fzf # fzf-tab进行命令补全时，默认的搜索命令会是fzf。
+# zstyle ':fzf-tab:*' fzf-command fzf # fzf-tab进行命令补全时，默认的搜索命令会是fzf。
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup # tmux中使用 popup window 显示补全结果
 zstyle ':completion:*:descriptions' format "[%d]" # fzf-tab will group the results by group description.
 
 zstyle ':fzf-tab:*' show-group full
@@ -27,22 +27,27 @@ zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
 
 # 预览文件内容
 # NOTE(gukele): 当你对命令重命名时，例如alias ls=exa, 你必须要对exa进行配置才生效。
+zstyle ':fzf-tab:complete:_zlua:*' query-string input
 
 # show file contents
 zstyle ':fzf-tab:complete:*:*' fzf-preview 'bash ${DOTFILES_DIR}/.zsh/file_preview.sh ${(Q)realpath}'
+zstyle ':fzf-tab:complete:*:*' popup-pad 30 0        # popup window的填充配置
+zstyle ':fzf-tab:complete:*:*' popup-min-size 200 15
 # zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 # export LESSOPEN='|${DOTFILES_DIR}/.lessfilter %s'
 
 # cd
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -a --no-user --no-time --icons --no-permissions --no-filesize "$1" 2>/dev/null $realpath' # remember to use single quote here!!!
+zstyle ':fzf-tab:complete:cd:*' popup-min-size 100 12
 # zstyle ':fzf-tab:complete:cd:*' query-string input
 
 # 设置 ls 命令的补全规则，不显示文件夹
-zstyle ':fzf-tab:complete:exa:*' fzf-command 'fzf'
+# zstyle ':fzf-tab:complete:exa:*' fzf-command 'fzf'
+zstyle ':fzf-tab:complete:exa:*' popup-min-size 100 12
 
 # batcat
 # zstyle ':fzf-tab:complete:batcat:*' fzf-command 'find $realpath' # remember to use single quote here!!!
-
+zstyle ':fzf-tab:complete:batcat:*' popup-min-size 200 12
 
 # give a preview of commandline arguments when completing `kill`
 # zstyle ':completion:*:*:*:*:processes' command 'ps -u $USER -o pid,user,comm -w -w'
