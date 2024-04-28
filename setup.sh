@@ -30,6 +30,8 @@ git submodule update --init --recursive
   backup_if_exists $HOME/.gitconfig
   backup_if_exists $HOME/.gitignore_global
   backup_if_exists $HOME/.dotfiles
+  backup_if_exists $HOME/.tmux
+  backup_if_exists $HOME/.tmux.conf
   backup_if_exists $HOME/.profile
 
   # soft link
@@ -40,8 +42,10 @@ git submodule update --init --recursive
 
   ln -s $DOTFILES/.bashrc  $HOME/.bashrc
   ln -s $DOTFILES/.zshrc $HOME/.zshrc
-  
-  ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
-  ln -s $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
 
+  ln -s $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
+  ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
+
+  # ln -s $DOTFILES/.tmux $HOME/.tmux
+  ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
 

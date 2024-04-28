@@ -1,3 +1,4 @@
 dotfiles_bk_*
 .zsh/cache/
 
+!.tmux.conf

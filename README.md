@@ -4,7 +4,7 @@
     * [zsh \&\& plugins](#zsh--plugins)
     * [tools](#tools)
     * [gitconfig](#gitconfig)
-
+    * [tmux \&\& plugins](#tmux--plugins)
 
 # Dotfiles
 
@@ -15,6 +15,9 @@ my dotfiles for Unbuntu or Debian about zsh && tools && gitconfig.
 ```bash
 git clone <repository_url> /your/path
 source /your/path/setup.sh
+
+tmux
+prefix + I # install tmux plugins
 ```
 
 ## describe
@@ -45,3 +48,28 @@ setup.sh will backup your dotfiles in the same directory.
 **htop**
 
 ### gitconfig
+
+### tmux && plugins
+
+**tmux plugins manager**
+
+* prefix + I
+
+note: uppercase I.
+Installs new plugins from GitHub or any other git repository
+Refreshes TMUX environment.
+
+* prefix + U
+
+updates plugin(s)
+
+* prefix + alt + u
+
+remove/uninstall plugins not on the plugin list
+
+**tmux-prefix-highlight**
+**tmux-resurrect**
+**tmux-continuum**
+**tmux-copycat**
+**tmux-yank**
+**tmux-open**
