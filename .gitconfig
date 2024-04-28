@@ -97,7 +97,7 @@
 	default = upstream # 默认推送到上游分支
 
 [credential]
-	helper = "!f() { /root/.vscode-server/bin/e170252f762678dec6ca2cc69aba1570769a5d39/node /tmp/vscode-remote-containers-339b1eee-a91c-4d49-904b-c0e53e04d45c.js git-credential-helper $*; }; f"
+	helper = "!f() { /root/.vscode-server/bin/e170252f762678dec6ca2cc69aba1570769a5d39/node /tmp/vscode-remote-containers-78b4aa47-9d64-46d8-a66d-b3cb3cb1e93b.js git-credential-helper $*; }; f"
 
 [grep]
 	lineNumber = true # 使用 grep 命令时，显示匹配行的行号
@@ -112,11 +112,11 @@
 	useConfigOnly = true # 仅使用 Git 配置文件中的用户信息
 
 [http]
-	cookieFile = ~/.gitcookies # HTTP cookie 文件路径
+	cookieFile = ~/.dotfiles/git/.gitcookies # HTTP cookie 文件路径
 
 [core]
 	pager = delta # 使用 delta 作为 Git 的分页程序
-	excludesfile = ~/.gitignore_global # 全局的 Git 忽略文件路径
+	excludesfile = ~/.gitignore_global
   autocrlf = input # 上传到github时 CRLF转为 LF。linux下使用 LF 换行。
 
 [url "https://github.com/"]

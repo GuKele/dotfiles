@@ -12,27 +12,25 @@ git submodule update --init --recursive
   mkdir $OLD_DOTFILES
 
   function backup_if_exists() {
-      if [ -f $1 ];
-      then
+      if [ -f $1 ];then
         mv $1 $OLD_DOTFILES
         echo "backup $1"
       fi
-      if [ -d $1 ];
-      then
+
+      if [ -d $1 ]; then
         mv $1 $OLD_DOTFILES
         echo "backup $1"
       fi
   }
 
   # Clean common conflicts
-  backup_if_exists ~/.bash_profile
+  backup_if_exists $HOME/.bash_profile
   backup_if_exists $HOME/.bashrc
   backup_if_exists $HOME/.zshrc
   backup_if_exists $HOME/.gitconfig
+  backup_if_exists $HOME/.gitignore_global
   backup_if_exists $HOME/.dotfiles
-  backup_if_exists ~/.tmux.conf
-  backup_if_exists ~/.profile
-
+  backup_if_exists $HOME/.profile
 
   # soft link
   DOTFILES="$(dirname $(realpath $0))"
@@ -40,8 +38,10 @@ git submodule update --init --recursive
 
   ln -s $DOTFILES $HOME/.dotfiles
 
-  ln -s $DOTFILES/.bashrc  ~/.bashrc
-  ln -s $DOTFILES/.gitconfig ~/.gitconfig
-  ln -s $DOTFILES/.zshrc ~/.zshrc
+  ln -s $DOTFILES/.bashrc  $HOME/.bashrc
+  ln -s $DOTFILES/.zshrc $HOME/.zshrc
+  
+  ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
+  ln -s $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
 
 
