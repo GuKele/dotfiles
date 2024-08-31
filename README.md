@@ -4,6 +4,7 @@
     * [zsh \&\& plugins](#zsh--plugins)
     * [tools](#tools)
     * [gitconfig](#gitconfig)
+    * [cargo](#cargo)
     * [tmux \&\& plugins](#tmux--plugins)
 
 # Dotfiles
@@ -27,6 +28,9 @@ setup.sh will backup your dotfiles in the same directory.
 ### zsh && plugins
 
 **powerlevel10k**
+
+  A zsh theme. Don't forget to install recommended fonts.
+
 **zsh-autosuggestions**
 **zsh-syntax-highlighting**
 **zsh-you-should-use**
@@ -35,21 +39,36 @@ setup.sh will backup your dotfiles in the same directory.
 ### tools
 
 **delta**
+
 **exa**
+
 **procs**
+
 **tldr**
+
 **fdfind**
+
 **ripgrep**
+
 **zoxide**
+
 **batcat**
+
 **duf**
+
 **fzf**
+
 **lsd**
+
 **htop**
 
 ### gitconfig
 
+### cargo
+
 ### tmux && plugins
+
+If you want use fzf-tab in tmux, the tmux version should >=3.2
 
 **tmux plugins manager**
 

@@ -8,19 +8,25 @@ git submodule update --init --recursive
 
 # PROGRAMS=(alias bash env git python scripts stow tmux vim zsh)
 # PROGRAMS=(alias aspell bash env git latex python scripts stow tmux vim zsh mac terminal)
-  OLD_DOTFILES="dotfiles_bk_$(date -u +"%Y%m%d%H%M%S")"
-  mkdir $OLD_DOTFILES
+  OLD_DOTFILES=".old_dotfiles/dotfiles_bk_$(date -u +"%Y%m%d%H%M%S")"
+  mkdir -p $OLD_DOTFILES
 
   function backup_if_exists() {
-      if [ -f $1 ];then
-        mv $1 $OLD_DOTFILES
-        echo "backup $1"
-      fi
+    if [ -f $1 ];then
+      mv $1 $OLD_DOTFILES
+      echo "backup $1"
+    fi
 
-      if [ -d $1 ]; then
-        mv $1 $OLD_DOTFILES
-        echo "backup $1"
-      fi
+    # 备份链接文件
+    if [ -L $1 ];then
+      mv $1 $OLD_DOTFILES
+      echo "backup $1"
+    fi
+
+    if [ -d $1 ]; then
+      mv $1 $OLD_DOTFILES
+      echo "backup $1"
+    fi
   }
 
   # Clean common conflicts
@@ -33,6 +39,8 @@ git submodule update --init --recursive
   backup_if_exists $HOME/.tmux
   backup_if_exists $HOME/.tmux.conf
   backup_if_exists $HOME/.profile
+
+  echo "Backup into $OLD_DOTFILES"
 
   # soft link
   DOTFILES="$(dirname $(realpath $0))"

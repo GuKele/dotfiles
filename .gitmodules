@@ -19,3 +19,6 @@
 [submodule "zsh-you-should-use"]
 	path = .zsh/plugins/zsh-you-should-use
 	url = https://github.com/MichaelAquilina/zsh-you-should-use.git
+[submodule "cargo"]
+	path = .cargo/cargo
+	url = https://github.com/rust-lang/cargo.git

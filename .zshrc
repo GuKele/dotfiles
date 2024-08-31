@@ -3,8 +3,9 @@ export DOTFILES_DIR="${HOME}/.dotfiles"
 # shell functions
 source ${DOTFILES_DIR}/.shell/functions.sh
 
-# path_append ${DOTFILES_DIR}/.local/bin ${DOTFILES_DIR}/.cargo/bin
-path_append ${DOTFILES_DIR}/.cargo/bin
+# cargo
+source ${DOTFILES_DIR}/.cargo/cargo_init.sh
+source ${DOTFILES_DIR}/.cargo/install.sh
 
 # local tools
 source ${DOTFILES_DIR}/.local/install.sh
