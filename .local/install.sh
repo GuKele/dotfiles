@@ -8,78 +8,38 @@
 # set -x
 # set -e
 
-
-
 install() {
-    has_cmd zsh || apt install zsh
-    has_cmd shellcheck || apt install shellcheck;
-    has_cmd tldr || apt install tldr;
-    has_cmd exa || apt install exa;
-    has_cmd fdfind || apt install fd-find;
-    has_cmd rg || apt install ripgrep;
-    has_cmd zoxide || apt install zoxide;
-    has_cmd batcat || has_cmd bat || apt install batcat || apt install bat;
-    has_cmd duf || apt install duf
-    # has_cmd fzf || apt install fzf
-    has_cmd htop || apt install htop
-
-    if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
-
-        if ! has_cmd lsd; then
-            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
-                ln -s ${DOTFILES_DIR}/.local/bin/lsd /usr/bin/lsd
-            else
-                tools+=" lsd"
-            fi
-        fi
-
-        if ! has_cmd delta; then
-            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
-                ln -s ${DOTFILES_DIR}/.local/bin/delta /usr/bin/delta
-            else
-                tools+=" delta"
-            fi
-        fi
-
-        if ! has_cmd procs; then
-            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
-                ln -s ${DOTFILES_DIR}/.local/bin/procs /usr/bin/procs
-            else
-                tools+=" procs"
-            fi
-        fi
-
-        if ! has_cmd tldr; then
-            if grep -qE "ID=(ubuntu|debian)" /etc/os-release; then
-                ln -s ${DOTFILES_DIR}/.local/bin/tldr /usr/bin/tldr
-            else
-                tools+=" tldr"
-            fi
-        fi
-
-
-        if [ -n "$tools" ]; then
-            echo "You should install${tools}"
-        fi
-
-    else # use cargo install
-        if ! has_cmd cargo; then
-            apt install cargo
-        fi
-
-        if ! has_cmd delta; then
-            cargo install git-delta
-        fi
-
-        if ! has_cmd procs; then
-            cargo install procs
-        fi
-
-        if ! has_cmd tldr; then
-            cargo isntall tealdeer
-        fi
+    if has_cmd cargo; then
+        has_cmd delta  || cargo install git-delta
+        has_cmd exa    || cargo install exa
+        has_cmd procs  || cargo install procs
+        has_cmd bat    || cargo install bat --locked 
+        has_cmd tldr   || cargo install tealdeer
+        has_cmd fd     || choco install fd-find
+        has_cmd rg     || cargo install rip-grep
+        has_cmd zoxide || cargo install zoxide --locked
+        has_cmd lsd    || cargo install lsd 
+        has_cmd btm    || cargo install bottom --locked
+        # # has_cmd shellcheck || apt install shellcheck;
     fi
-
+    
+    # duf
+    if has_cmd go && ! has_cmd duf; then
+        cd ${DOTFILES_DIR}/.local/share/duf && go build;
+    fi
+    
+    # hotp
+    if ! has_cmd htop; then
+        echo "没有发现htop命令,开始准备安装";
+        # cd ${DOTFILES_DIR}/.local/share/htop && ./configure --prefix=${DOTFILES_DIR}/.local/bin && make install;
+        path_append ${DOTFILES_DIR}/.local/bin/bin;
+        echo "安装htop成功"
+    fi
+    
+    # wudao-dict
+    if ! has_cmd wd; then
+        cd ${DOTFILES_DIR}/.local/share/wudao-dict/wudao-dict && bash setup.sh #或者sudo ./setup.sh
+    fi
 }
 
 install

@@ -20,6 +20,6 @@ fi
 has_cmd dust && alias du='dust'
 has_cmd duf && alias df='duf'
 has_cmd delta && alias diff='delta'
-# has_cmd z && alias cd='z'
+has_cmd z && alias cd='z'
 has_cmd rg && alias grep='rg'
 has_cmd procs && alias p='procs'

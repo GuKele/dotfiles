@@ -2,3 +2,5 @@ dotfiles_bk_*
 .zsh/cache/
 .old_dotfiles/
 !.tmux.conf
+.cargo/cargo/
+.cargo/rustup/

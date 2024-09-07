@@ -19,6 +19,13 @@
 [submodule "zsh-you-should-use"]
 	path = .zsh/plugins/zsh-you-should-use
 	url = https://github.com/MichaelAquilina/zsh-you-should-use.git
-[submodule "cargo"]
-	path = .cargo/cargo
-	url = https://github.com/rust-lang/cargo.git
+[submodule "duf"]
+	path = .local/share/duf
+	url = https://github.com/muesli/duf
+[submodule "htop"]
+	path = .local/share/htop
+	url = https://github.com/htop-dev/htop
+[submodule "wudao-dict"]
+	path = .local/share/wudao-dict
+	url = https://github.com/chestnutheng/wudao-dict
+

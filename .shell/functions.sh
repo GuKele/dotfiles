@@ -1,6 +1,7 @@
 has_cmd() {
     for opt in "$@"; do
         if ! command -v "$opt" >/dev/null; then
+            # echo "Command $opt not found"
             return 1 # 返回非0表示失败
         fi
     done

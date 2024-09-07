@@ -33,14 +33,17 @@ git submodule update --init --recursive
   backup_if_exists $HOME/.bash_profile
   backup_if_exists $HOME/.bashrc
   backup_if_exists $HOME/.zshrc
+  backup_if_exists $HOME/.zshenv
   backup_if_exists $HOME/.gitconfig
   backup_if_exists $HOME/.gitignore_global
   backup_if_exists $HOME/.dotfiles
   backup_if_exists $HOME/.tmux
   backup_if_exists $HOME/.tmux.conf
   backup_if_exists $HOME/.profile
+  backup_if_exists $HOME/.cargo
+  backup_if_exists $HOME/.rustup
 
-  echo "Backup into $OLD_DOTFILES"
+  echo "Backup into dotfiles/$OLD_DOTFILES"
 
   # soft link
   DOTFILES="$(dirname $(realpath $0))"
@@ -50,10 +53,10 @@ git submodule update --init --recursive
 
   ln -s $DOTFILES/.bashrc  $HOME/.bashrc
   ln -s $DOTFILES/.zshrc $HOME/.zshrc
+  ln -s $DOTFILES/.zshenv $HOME/.zshenv
 
   ln -s $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
   ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
 
   # ln -s $DOTFILES/.tmux $HOME/.tmux
   ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
-
