@@ -15,7 +15,7 @@ install() {
         has_cmd procs  || cargo install procs
         has_cmd bat    || cargo install bat --locked 
         has_cmd tldr   || cargo install tealdeer
-        has_cmd fd     || choco install fd-find
+        has_cmd fd     || cargo install fd-find
         has_cmd rg     || cargo install rip-grep
         has_cmd zoxide || cargo install zoxide --locked
         has_cmd lsd    || cargo install lsd 
@@ -30,10 +30,10 @@ install() {
     
     # hotp
     if ! has_cmd htop; then
-        echo "没有发现htop命令,开始准备安装";
+        # echo "没有发现htop命令,开始准备安装";
         # cd ${DOTFILES_DIR}/.local/share/htop && ./configure --prefix=${DOTFILES_DIR}/.local/bin && make install;
         path_append ${DOTFILES_DIR}/.local/bin/bin;
-        echo "安装htop成功"
+        # echo "安装htop成功"
     fi
     
     # wudao-dict

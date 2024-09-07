@@ -97,7 +97,7 @@
 	default = upstream # 默认推送到上游分支
 
 [credential]
-	helper = "!f() { /root/.vscode-server/bin/e170252f762678dec6ca2cc69aba1570769a5d39/node /tmp/vscode-remote-containers-78b4aa47-9d64-46d8-a66d-b3cb3cb1e93b.js git-credential-helper $*; }; f"
+	helper = "!f() { /root/.vscode-server/bin/fee1edb8d6d72a0ddff41e5f71a671c23ed924b9/node /tmp/vscode-remote-containers-720f6ce9-a008-4e77-85fb-1609566b6dc7.js git-credential-helper $*; }; f"
 
 [grep]
 	lineNumber = true # 使用 grep 命令时，显示匹配行的行号
@@ -112,7 +112,7 @@
 	useConfigOnly = true # 仅使用 Git 配置文件中的用户信息
 
 [http]
-	cookieFile = ~/.dotfiles/git/.gitcookies # HTTP cookie 文件路径
+	cookieFile = ${DOTFILES_DIR}/git/.gitcookies # HTTP cookie 文件路径
 
 [core]
 	pager = delta # 使用 delta 作为 Git 的分页程序
@@ -123,7 +123,7 @@
 	insteadOf = git://github.com/ # 使用 https 协议替代 git 协议来访问 GitHub
 
 [include]
-	path = ~/.gitconfig_local # Allow local customizations in the .gitconfig_local file
+	path = ${DOTFILES_DIR}/.gitconfig_local # Allow local customizations in the .gitconfig_local file
 
 [i18n]
 	commitencoding = utf-8 # 提交时的编码

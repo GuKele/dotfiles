@@ -4,3 +4,4 @@ dotfiles_bk_*
 !.tmux.conf
 .cargo/cargo/
 .cargo/rustup/
+.history/
