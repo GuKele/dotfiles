@@ -28,4 +28,5 @@
 [submodule "wudao-dict"]
 	path = .local/share/wudao-dict
 	url = https://github.com/chestnutheng/wudao-dict
-
+[submodule "fastfetch"]
+	path = .local/share/fastfetch

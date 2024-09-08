@@ -22,6 +22,7 @@
       * [1.2.2.12. htop](#12212-htop)
       * [1.2.2.13. bottom](#12213-bottom)
       * [1.2.2.14. wudao-dict](#12214-wudao-dict)
+      * [1.2.2.15. fast-fetch](#12215-fast-fetch)
     * [1.2.3. gitconfig](#123-gitconfig)
     * [1.2.4. cargo](#124-cargo)
     * [1.2.5. tmux \&\& plugins](#125-tmux--plugins)
@@ -140,6 +141,10 @@ delta、exa、procs、tldr、fd-find、ripgrep、zoxide、batcat、duf、fzf、l
   有道词典命令行版.
 
   需要安装环境: 需要python3和bs4, lxml(在线搜索用).
+
+#### 1.2.2.15. [fast-fetch](https://github.com/fastfetch-cli/fastfetch)
+
+  Fastfetch is a neofetch-like tool for fetching system information and displaying it prettily. It is written mainly in C, with performance and customizability in mind. Currently, Linux, Android, FreeBSD, macOS, SunOS and Windows 7+ are supported.
 
 ### 1.2.3. gitconfig
 

@@ -1,12 +1,11 @@
 #! /usr/bin/env bash
 
-# ripgrep 用于将 PDF 文档转换为纯文本文件。
 # chafa 它可以将各种图像文件（如 PNG、JPEG 等）转换为 ASCII 字符表示的图像，以便在终端中显示。
-
-# apt not search "procs bottom neovide dust lsd"
 
 # set -x
 # set -e
+
+path_append ${DOTFILES_DIR}/.local/bin
 
 install() {
     if has_cmd cargo; then
@@ -28,7 +27,7 @@ install() {
         cd ${DOTFILES_DIR}/.local/share/duf && go build;
     fi
     
-    # hotp
+    # htop
     if ! has_cmd htop; then
         # echo "没有发现htop命令,开始准备安装";
         # cd ${DOTFILES_DIR}/.local/share/htop && ./configure --prefix=${DOTFILES_DIR}/.local/bin && make install;
@@ -39,6 +38,11 @@ install() {
     # wudao-dict
     if ! has_cmd wd; then
         cd ${DOTFILES_DIR}/.local/share/wudao-dict/wudao-dict && bash setup.sh #或者sudo ./setup.sh
+    fi
+        
+    # fast-fetch
+    if ! has_cmd fastfetch; then
+        cd ${DOTFILES_DIR}/.local/share/fastfetch && bash run.sh && cp ./build/fastfetch ../../bin/
     fi
 }
 
