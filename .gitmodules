@@ -30,3 +30,4 @@
 	url = https://github.com/chestnutheng/wudao-dict
 [submodule "fastfetch"]
 	path = .local/share/fastfetch
+    url = https://github.com/fastfetch-cli/fastfetch
