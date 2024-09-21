@@ -52,8 +52,9 @@ git submodule update --init --recursive
   ln -s $DOTFILES $HOME/.dotfiles
 
   ln -s $DOTFILES/.bashrc  $HOME/.bashrc
-  ln -s $DOTFILES/.zshrc $HOME/.zshrc
+  
   ln -s $DOTFILES/.zshenv $HOME/.zshenv
+  ln -s $DOTFILES/.zshrc $HOME/.zshrc
 
   ln -s $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
   ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
