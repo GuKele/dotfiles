@@ -16,6 +16,7 @@ source ${DOTFILES_DIR}/.shell/aliases.sh
 # tools alias
 source ${DOTFILES_DIR}/.local/aliases.sh
 
-export PRIVATE_DEBUG="$PRIVATE_DEBUG -DDEBUG_MXF -DDEBUG_GUKELE"
+# shell env
+source ${DOTFILES_DIR}/.shell/env.sh
 
 has_cmd ff && ff

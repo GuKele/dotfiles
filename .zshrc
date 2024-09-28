@@ -22,4 +22,7 @@ source ${DOTFILES_DIR}/.shell/aliases.sh
 # tools alias
 source ${DOTFILES_DIR}/.local/aliases.sh
 
+# shell env
+source ${DOTFILES_DIR}/.shell/env.sh
+
 has_cmd ff && ff --pipe false
