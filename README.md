@@ -41,7 +41,7 @@
 
 ## 1.1. Setup
 
-**you should install zsh、tmux、git by your self.**
+**you should install zsh、tmux、git by yourself.**
 
 ```bash
 git clone <repository_url> /your/path # clone this repository
@@ -59,7 +59,7 @@ prefix + I # install tmux plugins
 
 #### 1.2.1.1. [powerlevel10k](https://github.com/romkatv/powerlevel10k?tab=readme-ov-file)
 
-  A zsh theme. Don't forget to install recommended fonts.
+  A zsh theme. Don't forget to install **recommended fonts**.
 
 
 #### 1.2.1.2. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
