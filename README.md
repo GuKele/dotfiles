@@ -182,7 +182,12 @@ remove/uninstall plugins not on the plugin list
 
 #### 1.2.5.4. [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)
 
-  Features:
+  **Dependencies**:
+  
+* tmux 1.9 or higher
+* tmux-resurrect plugin.
+
+  **Features**:
 
 * continuous saving of tmux environment
 

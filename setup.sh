@@ -61,3 +61,5 @@ git submodule update --init --recursive
 
   # ln -s $DOTFILES/.tmux $HOME/.tmux
   ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
+  ln -s $DOTFILES/.tmux $HOME/.tmux
+  
