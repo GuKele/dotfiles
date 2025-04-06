@@ -5,3 +5,4 @@ dotfiles_bk_*
 .cargo/cargo/
 .cargo/rustup/
 .history/
+*.log
