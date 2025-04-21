@@ -42,6 +42,7 @@ git submodule update --init --recursive
   backup_if_exists $HOME/.profile
   backup_if_exists $HOME/.cargo
   backup_if_exists $HOME/.rustup
+  backup_if_exists $HOME/.lldbinit
 
   echo "Backup into dotfiles/$OLD_DOTFILES"
 
@@ -63,3 +64,4 @@ git submodule update --init --recursive
   ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
   ln -s $DOTFILES/.tmux $HOME/.tmux
   
+  ln -s $DOTFILES/.lldbinit $HOME/.lldbinit
