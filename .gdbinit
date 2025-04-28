@@ -1,3 +1,5 @@
+# info pretty-printer 查看加载的pretty-printers
+# 也可以通过加载auto-load safe-path来加载pretty-printers
 python
 try:
     import sys

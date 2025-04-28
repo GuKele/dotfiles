@@ -58,6 +58,68 @@ var_prepend() {
 }
 
 # ==================================================================
+# 从指定的路径类型变量中移除某个条目
+path_var_remove() {
+    local var_name="$1"
+    local value_to_remove="$2"
+
+    eval "$var_name=\$(echo -n \${$var_name} | awk -v RS=':' -v ORS=':' '\$0 != \"$value_to_remove\"' | sed 's/:$//; s/^://')"
+    export "$var_name"
+}
+
+# 向指定路径类型变量末尾追加多个路径（如果路径已存在，先删除再添加）
+path_var_append() {
+    local var_name="$1"  # 获取变量名称 (例如 PATH, GDB_AUTOLOAD_PATH)
+    shift  # 移除第一个参数，剩下的是路径
+
+    # 如果变量不存在，初始化为空字符串
+    if [ -z "${!var_name}" ]; then
+        eval "$var_name=\"\""  # 初始化该变量为空字符串
+    fi
+
+    # 逐个处理剩下的路径，先删除已存在的路径，再追加新路径
+    for path_to_append in "$@"; do
+        path_var_remove "$var_name" "$path_to_append"
+
+        # 追加路径（修复: 防止前面有多余的冒号）
+        if [ -z "${!var_name}" ]; then
+            eval "$var_name=\"$path_to_append\""
+        else
+            eval "$var_name=\"\${$var_name}:$path_to_append\""
+        fi
+    done
+
+    # 导出该变量以便使其生效
+    export "$var_name"
+}
+
+# 向指定的路径类型变量开头添加多个条目
+path_var_prepend() {
+    local var_name="$1"  # 获取变量名称 (例如 PATH, GDB_AUTOLOAD_PATH)
+    shift  # 移除第一个参数，剩下的是路径
+
+    # 如果变量不存在，初始化为空字符串
+    if [ -z "${!var_name}" ]; then
+        eval "$var_name=\"\""  # 初始化该变量为空字符串
+    fi
+
+    # 逐个处理剩下的路径，先删除已存在的路径，再添加到开头
+    for path_to_prepend in "$@"; do
+        path_var_remove "$var_name" "$path_to_prepend"
+
+        # 在开头添加路径（修复: 防止前面有多余的冒号）
+        if [ -z "${!var_name}" ]; then
+            eval "$var_name=\"$path_to_prepend\""
+        else
+            eval "$var_name=\"$path_to_prepend:\${$var_name}\""
+        fi
+    done
+
+    # 导出该变量以便使其生效
+    export "$var_name"
+}
+
+# ==================================================================
 
 here() {
     local loc
