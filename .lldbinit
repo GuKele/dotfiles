@@ -2,6 +2,8 @@
 # LLDB 默认配置：增强显示能力
 # =============================
 
+# 开启容器友好显示
+settings set target.language.cpp.show-std-containers true
 # 增加容器和字符串可显示内容的长度
 settings set target.max-children-count 2048
 settings set target.max-string-summary-length 1024
@@ -19,70 +21,71 @@ settings set target.import-std-module true
 # 导入 libc++ 类型格式化主模块
 command script import lldb.formatters.cpp.libcxx
 
-# =============================
-# 顺序容器
-# =============================
-command script import lldb.formatters.cpp.libcxx.stdvector
-command script import lldb.formatters.cpp.libcxx.stdarray
-command script import lldb.formatters.cpp.libcxx.stdlist
-command script import lldb.formatters.cpp.libcxx.stdforwardlist
-command script import lldb.formatters.cpp.libcxx.stddeque
-command script import lldb.formatters.cpp.libcxx.stdqueue
-command script import lldb.formatters.cpp.libcxx.stdstack
-command script import lldb.formatters.cpp.libcxx.stdpriorityqueue
-command script import lldb.formatters.cpp.libcxx.stdspan
-
-# =============================
-# 关联容器
-# =============================
-command script import lldb.formatters.cpp.libcxx.stdmap
-command script import lldb.formatters.cpp.libcxx.stdmultimap
-command script import lldb.formatters.cpp.libcxx.stdset
-command script import lldb.formatters.cpp.libcxx.stdmultiset
-command script import lldb.formatters.cpp.libcxx.stdunorderedmap
-command script import lldb.formatters.cpp.libcxx.stdunorderedmultimap
-command script import lldb.formatters.cpp.libcxx.stdunorderedset
-command script import lldb.formatters.cpp.libcxx.stdunorderedmultiset
-
-# =============================
-# 智能指针
-# =============================
-command script import lldb.formatters.cpp.libcxx.stdsharedptr
-command script import lldb.formatters.cpp.libcxx.stdunique_ptr
-command script import lldb.formatters.cpp.libcxx.stdweakptr
-
-# =============================
-# 字符串相关
-# =============================
-command script import lldb.formatters.cpp.libcxx.stdstring
-command script import lldb.formatters.cpp.libcxx.stdstringview
-
-# =============================
-# 元组、pair 等
-# =============================
-command script import lldb.formatters.cpp.libcxx.stdtuple
-command script import lldb.formatters.cpp.libcxx.stdpair
-
-# =============================
-# 可选类型、any、variant
-# =============================
-command script import lldb.formatters.cpp.libcxx.stdoptional
-command script import lldb.formatters.cpp.libcxx.stdany
-command script import lldb.formatters.cpp.libcxx.stdvariant
-
-# =============================
-# 其他缺失的标准库类型
-# =============================
-command script import lldb.formatters.cpp.libcxx.stdenum
-command script import lldb.formatters.cpp.libcxx.stdbitset
-command script import lldb.formatters.cpp.libcxx.stdatomic
-command script import lldb.formatters.cpp.libcxx.stdfuture
-command script import lldb.formatters.cpp.libcxx.stdpromise
-command script import lldb.formatters.cpp.libcxx.stdmutex
-command script import lldb.formatters.cpp.libcxx.stdcondition_variable
-command script import lldb.formatters.cpp.libcxx.stdthread
-command script import lldb.formatters.cpp.libcxx.stdchrono
-command script import lldb.formatters.cpp.libcxx.stdregex
-command script import lldb.formatters.cpp.libcxx.stdexception
-command script import lldb.formatters.cpp.libcxx.stderror_code
-command script import lldb.formatters.cpp.libcxx.stdfilesystem
+# # =============================
+# # 顺序容器
+# # =============================
+# command script import lldb.formatters.cpp.libcxx.stdvector
+# command script import lldb.formatters.cpp.libcxx.stdarray
+# command script import lldb.formatters.cpp.libcxx.stdlist
+# command script import lldb.formatters.cpp.libcxx.stdforwardlist
+# command script import lldb.formatters.cpp.libcxx.stddeque
+# command script import lldb.formatters.cpp.libcxx.stdqueue
+# command script import lldb.formatters.cpp.libcxx.stdstack
+# command script import lldb.formatters.cpp.libcxx.stdpriorityqueue
+# command script import lldb.formatters.cpp.libcxx.stdspan
+#
+# # =============================
+# # 关联容器
+# # =============================
+# command script import lldb.formatters.cpp.libcxx.stdmap
+# command script import lldb.formatters.cpp.libcxx.stdmultimap
+# command script import lldb.formatters.cpp.libcxx.stdset
+# command script import lldb.formatters.cpp.libcxx.stdmultiset
+# command script import lldb.formatters.cpp.libcxx.stdunorderedmap
+# command script import lldb.formatters.cpp.libcxx.stdunorderedmultimap
+# command script import lldb.formatters.cpp.libcxx.stdunorderedset
+# command script import lldb.formatters.cpp.libcxx.stdunorderedmultiset
+#
+# # =============================
+# # 智能指针
+# # =============================
+# command script import lldb.formatters.cpp.libcxx.stdsharedptr
+# command script import lldb.formatters.cpp.libcxx.stdunique_ptr
+# command script import lldb.formatters.cpp.libcxx.stdweakptr
+#
+# # =============================
+# # 字符串相关
+# # =============================
+# command script import lldb.formatters.cpp.libcxx.stdstring
+# command script import lldb.formatters.cpp.libcxx.stdstringview
+#
+# # =============================
+# # 元组、pair 等
+# # =============================
+# command script import lldb.formatters.cpp.libcxx.stdtuple
+# command script import lldb.formatters.cpp.libcxx.stdpair
+#
+# # =============================
+# # 可选类型、any、variant
+# # =============================
+# command script import lldb.formatters.cpp.libcxx.stdoptional
+# command script import lldb.formatters.cpp.libcxx.stdany
+# command script import lldb.formatters.cpp.libcxx.stdvariant
+#
+# # =============================
+# # 其他缺失的标准库类型
+# # =============================
+# command script import lldb.formatters.cpp.libcxx.stdenum
+# command script import lldb.formatters.cpp.libcxx.stdbitset
+# command script import lldb.formatters.cpp.libcxx.stdatomic
+# command script import lldb.formatters.cpp.libcxx.stdfuture
+# command script import lldb.formatters.cpp.libcxx.stdpromise
+# command script import lldb.formatters.cpp.libcxx.stdmutex
+# command script import lldb.formatters.cpp.libcxx.stdcondition_variable
+# command script import lldb.formatters.cpp.libcxx.stdthread
+# command script import lldb.formatters.cpp.libcxx.stdchrono
+# command script import lldb.formatters.cpp.libcxx.stdregex
+# command script import lldb.formatters.cpp.libcxx.stdexception
+# command script import lldb.formatters.cpp.libcxx.stderror_code
+# command script import lldb.formatters.cpp.libcxx.stdfilesystem
+#

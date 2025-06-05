@@ -73,7 +73,8 @@ path_var_append() {
     shift  # 移除第一个参数，剩下的是路径
 
     # 如果变量不存在，初始化为空字符串
-    if [ -z "${!var_name}" ]; then
+    eval "temp_var_name=\"\${$var_name}\""
+    if [ -z "${temp_var_name}" ]; then
         eval "$var_name=\"\""  # 初始化该变量为空字符串
     fi
 
@@ -99,7 +100,8 @@ path_var_prepend() {
     shift  # 移除第一个参数，剩下的是路径
 
     # 如果变量不存在，初始化为空字符串
-    if [ -z "${!var_name}" ]; then
+    eval "temp_var_name=\"\${$var_name}\""
+    if [ -z "${!temp_var_name}" ]; then
         eval "$var_name=\"\""  # 初始化该变量为空字符串
     fi
 

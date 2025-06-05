@@ -9,7 +9,7 @@ elif has_cmd bat; then
 fi
 
 has_cmd exa && alias e='exa --icons'
-has_cmd btm && alias top='btm'
+# has_cmd btm && alias top='btm'
 has_cmd procs && alias p='procs'
 has_cmd neovide && alias ne='neovide'
 
