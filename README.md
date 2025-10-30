@@ -34,6 +34,7 @@
       * [1.2.5.6. tmux-copyrat](#1256-tmux-copyrat)
       * [1.2.5.7. tmux-yank](#1257-tmux-yank)
       * [1.2.5.8. tmux-open](#1258-tmux-open)
+      * [1.2.5.9. tmux-autoreload](#1259-tmux-autoreload)
 
 # 1. Dotfiles
 
@@ -41,7 +42,7 @@
 
 ## 1.1. Setup
 
-**you should install zsh、tmux、git by yourself.**
+**you should install zsh、tmux（>= 3.2）、git by yourself.**
 
 ```bash
 git clone <repository_url> /your/path # clone this repository
@@ -197,7 +198,7 @@ remove/uninstall plugins not on the plugin list
 
 #### 1.2.5.5. [tmux-copycat](https://github.com/tmux-plugins/tmux-copycat)
 
-  tmux 3.1 adds support for native regex searches. This is great news because it means a big part of 'tmux-copycat' is now available natively! Use this plugin only if you need its other features.
+  tmux 3.1 adds support for native **regex searches**. This is great news because it means a big part of 'tmux-copycat' is now available natively! Use this plugin only if you need its other features.
 
 #### 1.2.5.6. [tmux-copyrat](https://github.com/graelo/tmux-copyrat)
 
@@ -210,3 +211,7 @@ remove/uninstall plugins not on the plugin list
 #### 1.2.5.8. [tmux-open](https://github.com/tmux-plugins/tmux-open)
 
   Plugin for opening highlighted selection directly from Tmux copy mode.
+
+#### 1.2.5.9. [tmux-autoreload](https://github.com/b0o/tmux-autoreload)
+
+  tmux-autoreload watches your tmux configuration file and automatically reloads it on change.
