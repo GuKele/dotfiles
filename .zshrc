@@ -25,4 +25,4 @@ source ${DOTFILES_DIR}/.local/aliases.sh
 # shell env
 source ${DOTFILES_DIR}/.shell/env.sh
 
-has_cmd ff && ff --pipe false
+# has_cmd ff && ff --pipe false
