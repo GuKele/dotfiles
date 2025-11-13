@@ -31,6 +31,8 @@ git submodule update --init --recursive
 
   # Clean common conflicts
   backup_if_exists $HOME/.bash_profile
+  backup_if_exists $HOME/.profile
+
   backup_if_exists $HOME/.bashrc
   backup_if_exists $HOME/.zshrc
   backup_if_exists $HOME/.zshenv
@@ -39,11 +41,14 @@ git submodule update --init --recursive
   backup_if_exists $HOME/.dotfiles
   backup_if_exists $HOME/.tmux
   backup_if_exists $HOME/.tmux.conf
-  backup_if_exists $HOME/.profile
+
   backup_if_exists $HOME/.cargo
   backup_if_exists $HOME/.rustup
+
   backup_if_exists $HOME/.lldbinit
   backup_if_exists $HOME/.gdbinit
+
+  backup_if_exists $HOME/.config
 
   echo "Backup into dotfiles/$OLD_DOTFILES"
 
@@ -67,3 +72,5 @@ git submodule update --init --recursive
   
   ln -s $DOTFILES/.lldbinit $HOME/.lldbinit
   ln -s $DOTFILES/.gdbinit $HOME/.gdbinit
+
+  ln -s $DOTFILES/.local/.config $HOME/.config
