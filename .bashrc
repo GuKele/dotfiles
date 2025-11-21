@@ -17,6 +17,6 @@ source ${DOTFILES_DIR}/.shell/aliases.sh
 source ${DOTFILES_DIR}/.local/aliases.sh
 
 # shell env
-source ${DOTFILES_DIR}/.shell/env.sh
+source ${DOTFILES_DIR}/.shell/env.sh > /dev/null
 
 # has_cmd ff && ff
