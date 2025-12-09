@@ -178,3 +178,40 @@ there() {
 }
 
 
+# ==================================================================
+
+# 刷新 tmux 所有 session 的所有 pane
+tmux_refresh_all_panes_env() {
+    # 显示提示
+    echo "Refresh all tmux panes with your shell env, aliases, and functions."
+    echo "Warning: This will send Ctrl-C and clear to all panes (except the current one) to interrupt any running commands."
+    echo -n "Proceed? [Y/N]: "
+    read answer
+    case "$answer" in
+        [Yy]* )
+            ;;
+        * )
+            echo "User Cancelled."
+            return
+            ;;
+    esac
+
+    for session_name in $(tmux list-sessions -F '#S'); do
+        local session_name=$(tmux display-message -p '#S')
+        # 遍历 session 中所有 pane
+        for pane in $(tmux list-panes -t "$session_name"  -s -F '#{session_name}:#{window_index}.#{pane_index}:#{pane_id}'); do
+            local pane_id="${pane##*:}"  # 获取冒号后面的 pane_id
+            local pane_label="${pane%:*}"
+            if [[ "$pane_id" != "$TMUX_PANE" ]]; then
+                tmux send-keys -t "$pane_label" C-c
+
+                tmux send-keys -t "$pane_label" "source ~/.dotfiles/.shell/env.sh > /dev/null" C-m \
+                "source ~/.dotfiles/.shell/aliases.sh > /dev/null" C-m \
+                "source ~/.dotfiles/.shell/functions.sh > /dev/null" C-m \
+                "clear" C-m
+            fi
+
+            echo "Refreshed $pane_label"
+        done
+    done
+}
