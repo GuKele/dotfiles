@@ -246,3 +246,5 @@ docs/dev
 
 # Submission zip files
 *.zip
+
+**/.claude/settings.local.json

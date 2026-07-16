@@ -50,6 +50,11 @@ backup_if_exists $HOME/.gdbinit
 
 backup_if_exists $HOME/.config
 
+backup_if_exists $HOME/.agent/skills
+backup_if_exists $HOME/.claude/skills
+backup_if_exists $HOME/.claude/CLAUDE.md
+backup_if_exists $HOME/.claude/settings.json
+
 echo "Backup into dotfiles/$OLD_DOTFILES"
 
 # soft link
@@ -73,3 +78,8 @@ ln -s $DOTFILES/.lldbinit $HOME/.lldbinit
 ln -s $DOTFILES/.gdbinit $HOME/.gdbinit
 
 ln -s $DOTFILES/.local/.config $HOME/.config
+
+ln -s $DOTFILES/.agent/skills $HOME/.agent/skills
+ln -s $DOTFILES/.agent/skills $HOME/.claude/skills
+ln -s $DOTFILES/.claude/CLAUDE.md $HOME/.claude/CLAUDE.md
+ln -s $DOTFILES/.claude/settings.json $HOME/.claude/settings.json
