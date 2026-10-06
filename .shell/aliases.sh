@@ -7,4 +7,6 @@ alias lst='ls --tree'
 alias cp='cp -i'
 alias mv='mv -i'
 
+alias k8s='kubectl'
+
 # command it is not completely consistent with command -v, so don't alias command='command -v'

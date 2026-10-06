@@ -8,54 +8,59 @@ git submodule update --init --recursive
 
 # PROGRAMS=(alias bash env git python scripts stow tmux vim zsh)
 # PROGRAMS=(alias aspell bash env git latex python scripts stow tmux vim zsh mac terminal)
-local OLD_DOTFILES=".old_dotfiles/dotfiles_bk_$(date -u +"%Y%m%d%H%M%S")"
-mkdir -p $OLD_DOTFILES
 
 function backup_if_exists() {
-if [ -f $1 ];then
-    mv $1 $OLD_DOTFILES
-    echo "backup $1"
-fi
+    if [ -f $1 ];then
+        mv $1 $OLD_DOTFILES
+        echo "backup $1"
+    fi
 
-# 备份链接文件
-if [ -L $1 ];then
-    mv $1 $OLD_DOTFILES
-    echo "backup $1"
-fi
+    # 备份链接文件
+    if [ -L $1 ];then
+        mv $1 $OLD_DOTFILES
+        echo "backup $1"
+    fi
 
-if [ -d $1 ]; then
-    mv $1 $OLD_DOTFILES
-    echo "backup $1"
-fi
+    if [ -d $1 ]; then
+        mv $1 $OLD_DOTFILES
+        echo "backup $1"
+    fi
 }
 
-# Clean common conflicts
-backup_if_exists $HOME/.bash_profile
-backup_if_exists $HOME/.profile
+function backup {
+    local OLD_DOTFILES=".old_dotfiles/dotfiles_bk_$(date -u +"%Y%m%d%H%M%S")"
+    mkdir -p $OLD_DOTFILES
 
-backup_if_exists $HOME/.bashrc
-backup_if_exists $HOME/.zshrc
-backup_if_exists $HOME/.zshenv
-backup_if_exists $HOME/.gitconfig
-backup_if_exists $HOME/.gitignore_global
-backup_if_exists $HOME/.dotfiles
-backup_if_exists $HOME/.tmux
-backup_if_exists $HOME/.tmux.conf
+    # Clean common conflicts
+    backup_if_exists $HOME/.bash_profile
+    backup_if_exists $HOME/.profile
 
-backup_if_exists $HOME/.cargo
-backup_if_exists $HOME/.rustup
+    backup_if_exists $HOME/.bashrc
+    backup_if_exists $HOME/.zshrc
+    backup_if_exists $HOME/.zshenv
+    backup_if_exists $HOME/.gitconfig
+    backup_if_exists $HOME/.gitignore_global
+    backup_if_exists $HOME/.dotfiles
+    backup_if_exists $HOME/.tmux
+    backup_if_exists $HOME/.tmux.conf
 
-backup_if_exists $HOME/.lldbinit
-backup_if_exists $HOME/.gdbinit
+    backup_if_exists $HOME/.cargo
+    backup_if_exists $HOME/.rustup
 
-backup_if_exists $HOME/.config
+    backup_if_exists $HOME/.lldbinit
+    backup_if_exists $HOME/.gdbinit
 
-backup_if_exists $HOME/.agent/skills
-backup_if_exists $HOME/.claude/skills
-backup_if_exists $HOME/.claude/CLAUDE.md
-backup_if_exists $HOME/.claude/settings.json
+    backup_if_exists $HOME/.config
 
-echo "Backup into dotfiles/$OLD_DOTFILES"
+    backup_if_exists $HOME/.agent/skills
+    backup_if_exists $HOME/.claude/skills
+    backup_if_exists $HOME/.claude/CLAUDE.md
+    backup_if_exists $HOME/.claude/settings.json
+
+    echo "Backup into dotfiles/$OLD_DOTFILES"
+}
+
+backup
 
 # soft link
 DOTFILES="$(dirname $(realpath $0))"
