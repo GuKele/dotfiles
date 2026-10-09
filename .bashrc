@@ -8,7 +8,7 @@ source ${DOTFILES_DIR}/.cargo/cargo_init.sh
 source ${DOTFILES_DIR}/.cargo/install.sh
 
 # local tools
-source ${DOTFILES_DIR}/.local/install.sh
+source ${DOTFILES_DIR}/.local/setup.sh
 
 # shell aliases
 source ${DOTFILES_DIR}/.shell/aliases.sh

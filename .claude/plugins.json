@@ -1,0 +1,16 @@
+{
+  "plugins": [
+    {
+      "name": "superpowers",
+      "marketplace": "anthropic-plugin-directory"
+    },
+    {
+      "name": "code-review-anthropics",
+      "marketplace": "anthropic-plugin-directory"
+    },
+    {
+      "name": "code-simplifier",
+      "marketplace": "anthropic-plugin-directory"
+    }
+  ]
+}

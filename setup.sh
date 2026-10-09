@@ -66,25 +66,42 @@ backup
 DOTFILES="$(dirname $(realpath $0))"
 echo "DOTFILES=${DOTFILES}"
 
-ln -s $DOTFILES $HOME/.dotfiles
+function link_dotfile() {
+    ln -s $DOTFILES $HOME/.dotfiles
 
-ln -s $DOTFILES/.bashrc  $HOME/.bashrc
+    ln -s $DOTFILES/.bashrc  $HOME/.bashrc
 
-ln -s $DOTFILES/.zshenv $HOME/.zshenv
-ln -s $DOTFILES/.zshrc $HOME/.zshrc
+    ln -s $DOTFILES/.zshenv $HOME/.zshenv
+    ln -s $DOTFILES/.zshrc $HOME/.zshrc
 
-ln -s $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
-ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
+    ln -s $DOTFILES/git/.gitignore_global $HOME/.gitignore_global
+    ln -s $DOTFILES/.gitconfig $HOME/.gitconfig
 
-ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
-ln -s $DOTFILES/.tmux $HOME/.tmux
+    ln -s $DOTFILES/.tmux.conf $HOME/.tmux.conf
+    ln -s $DOTFILES/.tmux $HOME/.tmux
 
-ln -s $DOTFILES/.lldbinit $HOME/.lldbinit
-ln -s $DOTFILES/.gdbinit $HOME/.gdbinit
+    ln -s $DOTFILES/.lldbinit $HOME/.lldbinit
+    ln -s $DOTFILES/.gdbinit $HOME/.gdbinit
 
-ln -s $DOTFILES/.local/.config $HOME/.config
+    ln -s $DOTFILES/.local/.config $HOME/.config
 
-ln -s $DOTFILES/.agent/skills $HOME/.agent/skills
-ln -s $DOTFILES/.agent/skills $HOME/.claude/skills
-ln -s $DOTFILES/.claude/CLAUDE.md $HOME/.claude/CLAUDE.md
-ln -s $DOTFILES/.claude/settings.json $HOME/.claude/settings.json
+    ln -s $DOTFILES/.agent/skills $HOME/.agent/skills
+    ln -s $DOTFILES/.agent/skills $HOME/.claude/skills
+    ln -s $DOTFILES/.claude/CLAUDE.md $HOME/.claude/CLAUDE.md
+    ln -s $DOTFILES/.claude/settings.json $HOME/.claude/settings.json
+}
+
+link_dotfile
+
+# shell functions
+source ${DOTFILES}/.shell/functions.sh
+
+# cargo
+source ${DOTFILES}/.cargo/cargo_init.sh
+source ${DOTFILES}/.cargo/install.sh
+
+# local tools
+source ${DOTFILES}/.local/setup.sh
+
+# claude init
+source ${DOTFILES}/.claude/setup.sh

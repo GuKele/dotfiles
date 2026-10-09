@@ -1,7 +1,5 @@
 #! /usr/bin/env bash
 
-# chafa 它可以将各种图像文件（如 PNG、JPEG 等）转换为 ASCII 字符表示的图像，以便在终端中显示。
-
 # set -x
 # set -e
 
@@ -27,12 +25,11 @@ install() {
         cd ${DOTFILES_DIR}/.local/share/duf && go build;
     fi
 
-    # htop
+    # htop (prefix 用 .local, make install 会装到 $prefix/bin 即 .local/bin/htop)
     if ! has_cmd htop; then
-        # echo "没有发现htop命令,开始准备安装";
-        # cd ${DOTFILES_DIR}/.local/share/htop && ./configure --prefix=${DOTFILES_DIR}/.local/bin && make install;
-        path_append ${DOTFILES_DIR}/.local/bin/bin;
-        # echo "安装htop成功"
+        echo "没有发现htop命令,开始准备安装";
+        cd ${DOTFILES_DIR}/.local/share/htop && ./configure --prefix=${DOTFILES_DIR}/.local && make install;
+        echo "安装htop成功"
     fi
 
     # wudao-dict

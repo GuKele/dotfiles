@@ -1,5 +1,10 @@
 {
+  "model": "opus",
+  "enabledPlugins": {
+    "code-simplifier@anthropic-plugin-directory": true,
+    "superpowers@anthropic-plugin-directory": true,
+    "code-review-anthropics@anthropic-plugin-directory": true
+  },
   "extraKnownMarketplaces": {},
-  "effortLevel": "high",
-  "model": "opus"
+  "effortLevel": "high"
 }
